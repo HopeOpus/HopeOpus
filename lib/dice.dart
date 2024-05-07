@@ -15,8 +15,8 @@ void main() {
               ),
             ),
           ),
-          backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          toolbarHeight: 100,
+          backgroundColor: Color.fromARGB(255, 250, 8, 8),
+          toolbarHeight: 90,
         ),
         body: DicePage(),
       ),
@@ -27,14 +27,27 @@ void main() {
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Image(
-          image: AssetImage('images/dice1.png'),
-          height: 90,
-          width: 90,
-        )
-      ],
+    return const Center(
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Image(
+                image: AssetImage('images/dice1.png'),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Image(
+                image: AssetImage('images/dice2.png'),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
