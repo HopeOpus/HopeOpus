@@ -21,7 +21,6 @@ void main() {
                 const Text(
                   'Hope Opus',
                   style: TextStyle(
-                    fontFamily: 'assets/fonts/Pacifico-Regular.tff',
                     fontSize: 30,
                     color: Colors.white,
                   ),
