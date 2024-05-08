@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   return runApp(
@@ -7,6 +8,13 @@ void main() {
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 26, 26, 26),
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 250, 121, 8),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
           title: const Center(
             child: Text(
               'Dicee App',
@@ -17,40 +25,53 @@ void main() {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          backgroundColor: Color.fromARGB(255, 250, 8, 8),
-          toolbarHeight: 90,
         ),
-        body: DicePage(),
+        body: const DicePage(),
       ),
     ),
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
+
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 6;
+  int rightDiceNumber = 6;
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Row(
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: TextButton(
-                onPressed: null,
-                child: Image(
-                  image: AssetImage('images/dice1.png'),
-                ),
+                onPressed: () {
+                  setState(() {
+                    leftDiceNumber = Random().nextInt(6) + 1;
+                    rightDiceNumber = Random().nextInt(6) + 1;
+                  });
+                },
+                child: Image.asset('images/dice$leftDiceNumber.png'),
               ),
             ),
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: TextButton(
-                onPressed: null,
-                child: Image(
-                  image: AssetImage('images/dice2.png'),
-                ),
+                onPressed: () {
+                  setState(() {
+                    rightDiceNumber = Random().nextInt(6) + 1;
+                    leftDiceNumber = Random().nextInt(6) + 1;
+                  });
+                },
+                child: Image.asset('images/dice$rightDiceNumber.png'),
               ),
             ),
           ),
